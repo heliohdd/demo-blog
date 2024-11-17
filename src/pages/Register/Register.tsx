@@ -1,6 +1,6 @@
 import styles from "./Register.module.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
@@ -9,7 +9,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  // Conferir declaração de arrow function (e) => {} in typeScript
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     setError("");
@@ -18,7 +19,7 @@ const Register = () => {
       setError("As senhas precisam ser iguais!");
       return;
     }
-    
+
     const user = { displayName, email, password };
 
     console.log(user);
